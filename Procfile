@@ -1,1 +1,1 @@
-web: gunicorn DjangoApi.wsgi
+web: gunicorn dealdrive.wsgi
