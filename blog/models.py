@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 
 
@@ -6,6 +7,7 @@ def blog_image_path(instance, filename):
 
 
 class Blog(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     topic = models.CharField(max_length=250)
     intro = models.TextField(max_length=800)
     main = models.TextField(max_length=800)

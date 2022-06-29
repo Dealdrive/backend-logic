@@ -2,6 +2,7 @@ from email.mime import image
 from fileinput import filename
 from pyexpat import model
 from unicodedata import name
+import uuid
 from django.db import models
 from django.forms import CharField, ImageField
 
@@ -14,6 +15,7 @@ def package_image_path(instance, filename):
     return 'image/pak/{}/{}'.format(instance.name, filename)
 
 class Category(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=250, null=True, blank=True)
     image = models.ImageField(upload_to= category_image_path, null=True, blank = True )
     discription = models.TextField(max_length=500, null=True, blank=True)
@@ -28,6 +30,7 @@ class Category(models.Model):
 
 
 class Package(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=250)
     image = models.ImageField(upload_to= package_image_path, null=True, blank = True )
     price = models.DecimalField(decimal_places=2, max_digits=10, null=True, blank=True)

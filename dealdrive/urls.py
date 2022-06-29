@@ -37,6 +37,7 @@ urlpatterns = [
 admin.site.site_header = 'Dealdrive'                    # default: "Django Administration"
 admin.site.index_title = 'Dealdrive'                 # default: "Site administration"
 admin.site.site_title = 'DealDrive Admin'
+# admin.site.site_url = "https://www.amazon.com"
 
 
 if settings.DEBUG:
