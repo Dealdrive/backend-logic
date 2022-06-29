@@ -15,7 +15,7 @@ def package_image_path(instance, filename):
     return 'image/pak/{}/{}'.format(instance.name, filename)
 
 class Category(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=250, null=True, blank=True)
     image = models.ImageField(upload_to= category_image_path, null=True, blank = True )
     discription = models.TextField(max_length=500, null=True, blank=True)
