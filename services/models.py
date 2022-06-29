@@ -30,7 +30,7 @@ class Category(models.Model):
 
 
 class Package(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=250)
     image = models.ImageField(upload_to= package_image_path, null=True, blank = True )
     price = models.DecimalField(decimal_places=2, max_digits=10, null=True, blank=True)
