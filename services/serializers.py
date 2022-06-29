@@ -10,7 +10,7 @@ class PackageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Package
-        fields = ['name', 'price', 'description', 'image', 'category']
+        fields = ['id' 'name', 'price', 'description', 'image', 'category']
 
         # def get_category(self, obj):
         #     return obj.category.name
