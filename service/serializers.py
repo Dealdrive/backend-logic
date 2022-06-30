@@ -4,12 +4,12 @@ from .models import Category,Package
 
 
 class DetailedPackageSerializer(serializers.ModelSerializer):
-    category  =serializers.CharField(source = "category.name", read_only = True)
+    category  =serializers.CharField(source = "category.categoryName", read_only = True)
 
 
     class Meta:
         model = Package
-        fields = ['id','name', 'price', 'description', 'image', 'category']
+        fields = ['id','packageName', 'price', 'description', 'image', 'category']
 
 
 class PackageSerializer(serializers.ModelSerializer):
@@ -20,7 +20,7 @@ class PackageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Package
-        fields = ['id','name', 'price', 'description', 'image', 'category']
+        fields = ['id','packageName', 'price', 'description', 'image', 'category']
 
         # def get_category(self, obj):
         #     return obj.category.name
@@ -35,7 +35,7 @@ class CategorySerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Category
-        fields = ['id','name','discription', 'image', 'package_category']
+        fields = ['id','categoryName','discription', 'image', 'package_category']
 
    
 
