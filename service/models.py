@@ -20,7 +20,7 @@ class Category(models.Model):
     #     # ordering = ['created']
 
     def __str__(self):
-        return self.name
+        return self.categoryName
 
 
 class Package(models.Model):
@@ -37,4 +37,4 @@ class Package(models.Model):
         # ordering = ['created']
 
     def __str__(self):
-        return self.name
+        return self.packageName

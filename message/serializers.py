@@ -1,27 +1,28 @@
 
-from django.forms import CharField
+# from rest_framework.validators import UniqueTogetherValidator
 from rest_framework import serializers
 from .models import Message
 
 
-def required(value):
-    if value is None:
-        raise serializers.ValidationError('This field is required')
 
 
-class MessageSerializer(serializers.ModelSerializer):
 
-    subject = CharField(validators=[required])
+class MessageSerializer(serializers.Serializer):
 
-
+    
     class Meta:
         model = Message
         fields = ['id', 'userName', 'userEmail','subject','message']
 
-        # extra_kwargs = {'userName': {'required': True, 'allow_blank': False}}
-        # extra_kwargs = {'userEmail': {'required': True,'allow_blank': False}}
-        # extra_kwargs = {'subject': {'required': True,'allow_blank': False}}
-        # extra_kwargs = {'message': {'required': True,'allow_blank': False}}
+        # validators = [
+        #     UniqueTogetherValidator(
+        #         queryset=Message.objects.all(),
+        #         fields=['userName', 'userEmail', 'subject','message'],
+        #         message = 'this field is required'
+        #     )
+        # ]
+
+       
 
 
 
