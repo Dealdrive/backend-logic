@@ -12,7 +12,7 @@ class Categories(APIView):
     def get(self, request):
         cat = Category.objects.all()
         serializer = CategorySerializer(cat, many=True, context={'request':request})
-        pipeline=(serializer.data)
+        pipeline=({ 'cats':serializer.data })
 
         return Response(pipeline, status.HTTP_200_OK)
 
@@ -22,8 +22,8 @@ class Categories(APIView):
         if serializer.is_valid():
             save = serializer.save()
 
-            return Response(serializer.data, status = status.HTTP_201_CREATED)
-        return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+            return Response({ 'cats':serializer.data }, status = status.HTTP_201_CREATED)
+        return Response({ 'cats':serializer.data }, status=status.HTTP_400_BAD_REQUEST)
 
 
 class Detailed_Cat(APIView):
@@ -37,7 +37,7 @@ class Detailed_Cat(APIView):
     def get(self, request, pk):
         cat = self.get_data(pk)
         serializer = CategorySerializer(cat, context={'request':request})
-        return Response(serializer.data, status = status.HTTP_200_OK)
+        return Response({ 'cats':serializer.data }, status = status.HTTP_200_OK)
 
 
     def put(self, request, pk):
@@ -45,8 +45,8 @@ class Detailed_Cat(APIView):
         serializer = CategorySerializer(cat, data = request.data)
         if serializer.is_valid():
             save = serializer.save()
-            return Response(serializer.data, status = status.HTTP_201_CREATED)
-        return Response(serializer.data, status = status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({ 'cats':serializer.data }, status = status.HTTP_201_CREATED)
+        return Response({ 'cats':serializer.data }, status = status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
     def delete(self, request, pk):
@@ -63,7 +63,7 @@ class Packages(APIView):
     def get(self, request):
         pak = Package.objects.all()
         serializer = DetailedPackageSerializer(pak, many=True, context={'request':request})
-        pipeline=(serializer.data)
+        pipeline=({ 'paks':serializer.data })
 
         return Response(pipeline, status.HTTP_200_OK)
 
@@ -73,8 +73,8 @@ class Packages(APIView):
         if serializer.is_valid():
             save = serializer.save()
 
-            return Response(serializer.data, status = status.HTTP_201_CREATED)
-        return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+            return Response({ 'paks':serializer.data }, status = status.HTTP_201_CREATED)
+        return Response({ 'paks':serializer.data }, status=status.HTTP_400_BAD_REQUEST)
 
 
 class Detailed_pak(APIView):
@@ -88,7 +88,7 @@ class Detailed_pak(APIView):
     def get(self, request, pk):
         pak = self.get_data(pk)
         serializer = DetailedPackageSerializer(pak, context={'request':request})
-        return Response(serializer.data, status = status.HTTP_200_OK)
+        return Response({ 'paks':serializer.data }, status = status.HTTP_200_OK)
 
 
     def put(self, request, pk):
@@ -96,8 +96,8 @@ class Detailed_pak(APIView):
         serializer = PackageSerializer(pak, data = request.data)
         if serializer.is_valid():
             save = serializer.save()
-            return Response(serializer.data, status = status.HTTP_201_CREATED)
-        return Response(serializer.data, status = status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({ 'paks':serializer.data }, status = status.HTTP_201_CREATED)
+        return Response({ 'paks':serializer.data }, status = status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
     def delete(self, request, pk):
