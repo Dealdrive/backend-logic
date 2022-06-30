@@ -29,7 +29,7 @@ class PackageSerializer(serializers.ModelSerializer):
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    package_category = PackageSerializer(many = True, read_only=True)
+    package_category = PackageSerializer(many = True)
     
 
     
