@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Category, Package
+from .models import Services
 # Register your models here.
 
-admin.site.register(Category)
-admin.site.register(Package)
+admin.site.register(Services)
+# admin.site.register(Package)

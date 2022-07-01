@@ -1,41 +1,53 @@
+from dataclasses import fields
 from rest_framework import serializers
-from .models import Category,Package
+from .models import Services
 
 
 
-class DetailedPackageSerializer(serializers.ModelSerializer):
-    category  =serializers.CharField(source = "category.categoryName", read_only = True)
+# class DetailedPackageSerializer(serializers.ModelSerializer):
+#     Services  =serializers.CharField(source = "services.servicesName", read_only = True)
 
 
-    class Meta:
-        model = Package
-        fields = ['id','packageName', 'price', 'description', 'image', 'category']
+#     class Meta:
+#         model = Package
+#         fields = ['id','packageName', 'price', 'description', 'image', 'Services']
 
 
-class PackageSerializer(serializers.ModelSerializer):
-    # category  =serializers.CharField(source = "category.name", read_only = True)
+# class PackageSerializer(serializers.ModelSerializer):
+#     # Services  =serializers.CharField(source = "Services.name", read_only = True)
 
 
+#     class Meta:
+#         model = Package
+#         fields = ['id','packageName', 'price', 'description', 'image', 'services']
+
+#         # def get_Services(self, obj):
+#         #     return obj.Services.name
+
+#     def to_representation(self, instance):
+#         data = super().to_representation(instance)
+#         data = serializers.ModelSerializer.to_representation(self, instance)
+#         return data
+
+
+
+
+class ServicesSerializer(serializers.ModelSerializer):
+    # package_services = PackageSerializer(many = True, read_only = True)
     
 
-    class Meta:
-        model = Package
-        fields = ['id','packageName', 'price', 'description', 'image', 'category']
-
-        # def get_category(self, obj):
-        #     return obj.category.name
-
-
-
-
-class CategorySerializer(serializers.ModelSerializer):
-    package_category = PackageSerializer(many = True, read_only=True)
-    
-
     
     class Meta:
-        model = Category
-        fields = ['id','categoryName','discription', 'image', 'package_category']
+        model = Services
+        # read_only_fields = ('id','servicesName','discription', 'image', 'package_services')
+        # fields = ['id','servicesName','discription', 'image', 'package_services']
+        fields = '__all__'
+
+
+    # def to_representation(self, instance):
+    #     data = super().to_representation(instance)
+    #     data = serializers.ModelSerializer.to_representation(self, instance)
+    #     return data
 
    
 
