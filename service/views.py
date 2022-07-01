@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -18,7 +19,7 @@ class Categories(APIView):
         pipeline=(serializer.data)
 
 
-        return Response(pipeline, status.HTTP_200_OK)
+        return Response(pipeline, status = status.HTTP_200_OK)
 
 
     def post(self, request):

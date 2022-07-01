@@ -3,4 +3,9 @@ from .models import Message
 
 # Register your models here.
 
-admin.site.register(Message)
+class MessageAdmin(admin.ModelAdmin):
+    list_display = ('userName', 'userEmail', 'subject', 'message')
+
+
+admin.site.register(Message, MessageAdmin)
+
